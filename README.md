@@ -44,3 +44,33 @@ Built with **HTML, CSS, and vanilla JavaScript**, AlgoStats dynamically displays
 ```bash
 git clone https://github.com/your-username/algostats.git
 cd algostats
+
+```
+### 📂 Project Structure
+
+AlgoStats/
+├── index.html          # Main HTML file
+├── style.css           # Styling and layout
+├── script.js           # Core JavaScript logic
+├── assets/             # Images and icons
+└── README.md           # Documentation
+
+### 🧠 How It Works
+
+1.The user enters a LeetCode username into the search bar.
+2.The app sends an asynchronous request to fetch profile data.
+3.The returned JSON data is dynamically rendered into the DOM.
+4.Error and loading states provide instant feedback and smooth UX.
+
+### 💡 Future Enhancements
+
+📊 Add data visualization (e.g., Chart.js for problem stats)
+🧮 Allow multiple user comparisons
+🗂️ Integrate contest and submission histories
+🌙 Add dark/light mode toggle
+
+🧑‍💻 Author
+
+Vishnu S
+💼 Front-End Developer | Focused on clean UI & seamless user experience
+
