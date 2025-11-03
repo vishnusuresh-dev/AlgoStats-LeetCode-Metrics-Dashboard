@@ -27,22 +27,89 @@ document.addEventListener("DOMContentLoaded",function(){
         return false;
       }
       else{
-        searchBtn.innerHTML='<button disabled>Searching</button>'
         return true;
       }
     }
 
 // fetching user details using username
 
-async function fetchUserDetails(userName){
-  const url = `https://leetcode-stats-api.herokuapp.com/${userName}`;
-  
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data);
-}
+    async function fetchUserDetails(userName){
+      try{
+        searchBtn.innerHTML='<button disabled>Searching</button>';
+        //API fetch setup(method 1)
+
+        // const url = `https://leetcode-stats-api.herokuapp.com/${userName}`;
+
+        //Graphql setup(method 2)
+
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/' // pr0xy server(to rectify CORS error)
+        const url = 'https://leetcode.com/graphql/';
+            
+        const myHeaders = new Headers();
+        myHeaders.append("content-type", "application/json");
+
+        const graphql = JSON.stringify({
+        query: "\n    query userSessionProgress($username: String!) {\n  allQuestionsCount {\n    difficulty\n    count\n  }\n  matchedUser(username: $username) {\n    submitStats {\n      acSubmissionNum {\n        difficulty\n        count\n        submissions\n      }\n      totalSubmissionNum {\n        difficulty\n        count\n        submissions\n      }\n    }\n  }\n}\n    ",
+        variables: { "username": `${userName}` }})
 
 
+
+        const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: graphql,
+        };
+
+
+        const response = await fetch(proxyUrl + url, requestOptions);//proxy url should come first when conacatinating
+        if(response.ok){
+        const parsedData = await response.json();
+        console.log(parsedData);
+        dataFromParsedData(parsedData);
+        }
+        else{
+          throw new Error("Something Went Wrong")
+        }
+      }
+
+
+      catch(Error){
+        statCards.innerHTML=`<p style="text-align:center">issue faced</p>`;
+      }
+
+
+      finally{
+        searchBtn.innerHTML='<button>Search</button>';
+      }
+    }
+
+//update progress data on UI 
+
+  function updateProgress(solved,total,label,progressBar){
+  const degree=(solved/total)*100;
+  progressBar.style.setProperty("--progress-degree", `${degree}%`);
+  label.textContent = `${solved}/${total}`;
+  }
+
+
+// getting data from parsedData
+
+    function dataFromParsedData(parsedData){
+      const totalQuestionsCount = parsedData.data.allQuestionsCount[0].count;
+      const totalEasyQuestionsCount = parsedData.data.allQuestionsCount[1].count;
+      const totalMediumQuestionsCount = parsedData.data.allQuestionsCount[2].count;
+      const totalHardQuestionsCount = parsedData.data.allQuestionsCount[3].count;      
+
+      const solvedTotalQuestion = parsedData.data.matchedUser.submitStats.acSubmissionNum[0].count;     
+      const solvedEasyQuestion = parsedData.data.matchedUser.submitStats.acSubmissionNum[1].count;
+      const solvedMediumQuestion = parsedData.data.matchedUser.submitStats.acSubmissionNum[2].count;
+      const solvedHardQuestion = parsedData.data.matchedUser.submitStats.acSubmissionNum[3].count;
+
+      updateProgress(solvedEasyQuestion,totalEasyQuestionsCount,easyLabel,easyCircle);
+      updateProgress(solvedMediumQuestion,totalMediumQuestionsCount,mediumLabel,mediumCircle);
+      updateProgress(solvedHardQuestion,totalHardQuestionsCount,hardLabel,hardCircle);
+    }
+    
 //when clicks on search button
 
   searchBtn.addEventListener('click',function(){
