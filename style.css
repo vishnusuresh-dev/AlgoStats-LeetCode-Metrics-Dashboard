@@ -58,8 +58,8 @@ body{
   width: 5rem;
   border-radius: 1rem;
   background-color: #9381FF;
-  color: aliceblue;
   border: 1px solid white;
+
 }
 
 .search-btn:hover{
@@ -82,6 +82,7 @@ body{
 }
 
 .progress-item{
+margin-top:1rem;
 display: flex;
 align-items: center;
 font-size: small;
@@ -96,3 +97,23 @@ border: 5px solid white;
 background: conic-gradient(#6a994e var(--progress-degree,0%),#386641  0%);
 }
  
+.stats-cards{
+background-color: #8d59b4;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-wrap: wrap;
+gap:20px;
+height: 12rem;
+text-align: center;
+}
+
+.cards{
+  color: white;
+  margin-top: 0.5rem;
+  background-color: rgb(90, 59, 214);
+  width: 250px;
+  padding: 10px;
+  border-radius: 20px;
+
+}
