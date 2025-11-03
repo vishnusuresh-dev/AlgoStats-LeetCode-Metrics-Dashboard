@@ -7,7 +7,6 @@
 
 body{
   height: 100vh;
-  width: 100vw;
   background-color:#9381FF;
   display: flex;
   flex-direction: column;
@@ -17,8 +16,9 @@ body{
 
 .container{
   background-color: #B8B8FF;
-  width: 60vw;
-  height: 60vh;
+  max-width: 720px;
+  min-width: 480px;
+  height: 80vh;
   padding: 1rem;
 
 }
@@ -34,8 +34,7 @@ body{
 }
 
 #p{
-  font-family:cursive ;
-
+  font-family: cursive;
 }
 
 .input-container{
@@ -48,17 +47,29 @@ body{
   width: 20rem;
   height: 2rem;
   border-radius: 5px;
+  border: 1px solid white;
 }
 
+.text-field:hover{
+  border: 3px solid #9381FF;
+}
 .search-btn{
   height: 2rem;
   width: 5rem;
   border-radius: 1rem;
+  background-color: #9381FF;
+  color: aliceblue;
+  border: 1px solid white;
+}
+
+.search-btn:hover{
+  border: 2px solid black;
+  cursor: pointer;
 }
 
 .stats-container{
   background-color: #7075a9;
-  height: 15rem;
+  height: 10rem;
 }
 
 .progress-container{
@@ -74,6 +85,7 @@ body{
 display: flex;
 align-items: center;
 font-size: small;
+flex-direction: column;
 justify-content: center;
 color: aliceblue;
 font-weight: 700;
@@ -81,6 +93,6 @@ height: 100px;
 width: 100px;
 border-radius: 50%;
 border: 5px solid white;
-background: conic-gradient(#6a994e var(--progress-degree,50%),#386641  0%);
+background: conic-gradient(#6a994e var(--progress-degree,0%),#386641  0%);
 }
  
