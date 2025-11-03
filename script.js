@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
         //Graphql setup(method 2)
 
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/' // pr0xy server(to rectify CORS error)
+        const proxyUrl = 'https://cors-anywhere.herokuapp.com/' // proxy server(to rectify CORS error)
         const url = 'https://leetcode.com/graphql/';
             
         const myHeaders = new Headers();
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
       catch(Error){
-        statCards.innerHTML=`<p style="text-align:center">issue faced</p>`;
+        statCards.innerHTML=`<p style="text-align:center">${Error.message}</p>`;
       }
 
 
@@ -108,8 +108,29 @@ document.addEventListener("DOMContentLoaded",function(){
       updateProgress(solvedEasyQuestion,totalEasyQuestionsCount,easyLabel,easyCircle);
       updateProgress(solvedMediumQuestion,totalMediumQuestionsCount,mediumLabel,mediumCircle);
       updateProgress(solvedHardQuestion,totalHardQuestionsCount,hardLabel,hardCircle);
+
+      displayCrads(parsedData,statCards);
     }
-    
+
+//display card section dynamically  
+
+function displayCrads(parsedData,statCards){
+  const cardsData = [
+    {label:"Overall Submissions",value:parsedData.data.matchedUser.submitStats.totalSubmissionNum[0].submissions},
+    {label:"Overall Easy Submissions",value:parsedData.data.matchedUser.submitStats.totalSubmissionNum[1].submissions},
+    {label:"Overall Medium Submissions",value:parsedData.data.matchedUser.submitStats.totalSubmissionNum[2].submissions},
+    {label:"Overall Hard Submissions",value:parsedData.data.matchedUser.submitStats.totalSubmissionNum[3].submissions}    
+  ];
+  statCards.innerHTML = cardsData.map(
+    data=>{
+      return `<div class="cards"> 
+               <h4>${data.label}</h4>
+               <p class=>${data.value}</p>
+               </div>`
+    }
+  ).join("");
+}
+
 //when clicks on search button
 
   searchBtn.addEventListener('click',function(){
