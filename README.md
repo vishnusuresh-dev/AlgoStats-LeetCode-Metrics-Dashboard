@@ -48,12 +48,12 @@ cd algostats
 ```
 ### 📂 Project Structure
 
-AlgoStats/
-├── index.html          # Main HTML file
-├── style.css           # Styling and layout
-├── script.js           # Core JavaScript logic
-├── assets/             # Images and icons
-└── README.md           # Documentation
+- AlgoStats/
+- ├── index.html          # Main HTML file
+- ├── style.css           # Styling and layout
+- ├── script.js           # Core JavaScript logic
+- ├── assets/             # Images and icons
+- └── README.md           # Documentation
 
 ### 🧠 How It Works
 
@@ -64,10 +64,10 @@ AlgoStats/
 
 ### 💡 Future Enhancements
 
-📊 Add data visualization (e.g., Chart.js for problem stats)
-🧮 Allow multiple user comparisons
-🗂️ Integrate contest and submission histories
-🌙 Add dark/light mode toggle
+- 📊 Add data visualization (e.g., Chart.js for problem stats)
+- 🧮 Allow multiple user comparisons
+- 🗂️ Integrate contest and submission histories
+- 🌙 Add dark/light mode toggle
 
 🧑‍💻 Author
 
