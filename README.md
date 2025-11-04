@@ -57,10 +57,10 @@ AlgoStats/
 
 ### 🧠 How It Works
 
-1.The user enters a LeetCode username into the search bar.
-2.The app sends an asynchronous request to fetch profile data.
-3.The returned JSON data is dynamically rendered into the DOM.
-4.Error and loading states provide instant feedback and smooth UX.
+- The user enters a LeetCode username into the search bar.
+- The app sends an asynchronous request to fetch profile data.
+- The returned JSON data is dynamically rendered into the DOM.
+- Error and loading states provide instant feedback and smooth UX.
 
 ### 💡 Future Enhancements
 
