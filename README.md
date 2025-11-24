@@ -42,7 +42,7 @@ Built with **HTML, CSS, and vanilla JavaScript**, AlgoStats dynamically displays
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/algostats.git
+git clone https://github.com/vishnusuresh-dev/algostats.git
 cd algostats
 
 ```
